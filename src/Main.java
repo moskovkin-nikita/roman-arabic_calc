@@ -7,19 +7,18 @@ public class Main {
     }
 
     public static String calc(String input){
-        String result = null;
+        String result;
         ArabicCalc calculatorArabic = (ArabicCalc) Manager.calcDefaultArabic();
         RomanCalc calculatorRoman = (RomanCalc) Manager.calcDefaultRoman();
 
-        if (calculatorRoman.dataCheck(input)) {
+        if (calculatorRoman.checkIn(input)) {
             result = calculatorRoman.calculate(input);
         }
-        else if (calculatorArabic.dataCheck(input)){
+        else if (calculatorArabic.checkIn(input)){
             result =  calculatorArabic.calculate(input);
-
         }
         else {
-            result = calculatorArabic.exeption();
+           throw new IllegalArgumentException();
         }
 
         return result;
